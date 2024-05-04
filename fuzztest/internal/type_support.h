@@ -39,7 +39,7 @@
 #include "./fuzztest/internal/domains/absl_helpers.h"
 #include "./fuzztest/internal/meta.h"
 #include "./fuzztest/internal/printer.h"
-#include "google/protobuf/text_format.h"
+//#include "google/protobuf/text_format.h"
 
 namespace fuzztest::internal {
 
@@ -258,11 +258,11 @@ struct ProtobufPrinter {
     } else {
       static constexpr absl::string_view kProtoParser = "ParseTestProto";
       std::string textproto;
-      if (!google::protobuf::TextFormat::PrintToString(val, &textproto)) {
-        // Fall-back to debug printing, which is on purpose not parseable but at
-        // least gives some idea about the contents of the proto.
-        textproto = absl::StrCat(val);
-      }
+//      if (!google::protobuf::TextFormat::PrintToString(val, &textproto)) {
+//        // Fall-back to debug printing, which is on purpose not parseable but at
+//        // least gives some idea about the contents of the proto.
+//        textproto = absl::StrCat(val);
+//      }
       switch (mode) {
         case domain_implementor::PrintMode::kHumanReadable:
           absl::Format(out, "(%s)", textproto);
